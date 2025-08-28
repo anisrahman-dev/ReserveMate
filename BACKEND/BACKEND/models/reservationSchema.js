@@ -40,6 +40,6 @@ const reservationSchema = new mongoose.Schema({
   },
 });
 
-// ✅ important: prevents model overwrite (fixes validator not triggering)
+
 export const Reservation =
   mongoose.models.Reservation || mongoose.model("Reservation", reservationSchema);

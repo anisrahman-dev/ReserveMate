@@ -6,7 +6,7 @@ const send_reservation = async (req, res, next) => {
 
   const { firstName, lastName, email, date, time, phone } = req.body;
 
-  // Check if all fields exist
+  
   if (!firstName || !lastName || !email || !date || !time || !phone) {
     return next(new ErrorHandler("Please fill out the full reservation form!", 400));
   }
@@ -14,16 +14,16 @@ const send_reservation = async (req, res, next) => {
   try {
     console.log("VALIDATION TEST:", firstName, lastName, email, phone, date, time);
 
-    // 🔎 Run schema validation manually before saving
+    
     try {
       const test = new Reservation({ firstName, lastName, email, date, time, phone });
-      await test.validate(); // will throw if invalid
+      await test.validate();
     } catch (e) {
       console.error("VALIDATION ERROR:", e.message);
-      return next(new ErrorHandler(e.message, 400)); // send back error response
+      return next(new ErrorHandler(e.message, 400));
     }
 
-    // 👇 Save if validation passed
+    
     await Reservation.create({ firstName, lastName, email, date, time, phone });
 
     res.status(201).json({

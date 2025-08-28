@@ -17,7 +17,7 @@ const Reservation = () => {
     e.preventDefault();
       console.log("Submitting form...");
 
-    // Basic client-side validation
+   
     if (!firstName || !lastName || !email || !phone || !date || !time) {
       toast.error("Please fill out all fields!");
       return;
@@ -35,7 +35,7 @@ const Reservation = () => {
 
       toast.success(data.message);
 
-      // Reset form
+     
       setFirstName("");
       setLastName("");
       setEmail("");
